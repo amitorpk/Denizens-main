@@ -81,18 +81,18 @@ const Login = ({ navigation }) => {
           } else {
             console.log("role", attributes[2].getValue());
             const role = attributes[2].getValue();
-            //   Alert.alert(
-            //     "Welcome" + " " + attributes[3].getValue(),
-            //     "You have successfully logged in",
-            //     [
-            //       {
-            //         text: "OK",
-            //         onPress: () => console.log("OK Pressed"),
-            //         style: "cancel",
-            //       },
-            //     ],
-            //     { cancelable: false }
-            //   );
+            Alert.alert(
+              "Welcome" + " " + attributes[3].getValue(),
+              "You are logging in",
+              [
+                {
+                  text: "OK",
+                  onPress: () => console.log("OK Pressed"),
+                  style: "cancel",
+                },
+              ],
+              { cancelable: false }
+            );
             console.log("attributes", attributes[0].Value);
 
             axios
