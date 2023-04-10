@@ -6,18 +6,15 @@
 // //   TouchableOpacity,
 // //   Image} from "react-native"
 // // import React, { useState, useEffect } from "react"
-<<<<<<< HEAD
 // // import * as ImagePicker from "expo-image-picker";
 
 // // const Post = () => {
 // //   const [image, setImage] = useState("")
 // import * as ImagePicker from "expo-image-picker"
-=======
 // import * as ImagePicker from "expo-image-picker";
 
 // // const Post = () => {
 // //   const [image, setImage] = useState("")
->>>>>>> 37fc0de5d54563814a218c204b654c715465276a
 // import CheckBox from "expo-checkbox"
 
 // const pickImage = async () => {
@@ -104,10 +101,7 @@
 // // export default Post
 
 // import React, { useState } from "react";
-<<<<<<< HEAD
 // }
-=======
->>>>>>> 37fc0de5d54563814a218c204b654c715465276a
 // import React, { useState } from "react"
 // import {
 //   View,

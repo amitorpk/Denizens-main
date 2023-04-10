@@ -10,7 +10,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { collection, getDoc, doc } from "firebase/firestore";
 import db from "../../../firebase";
-
+import Config from "react-native-config";
 import {
   AuthenticationDetails,
   CognitoUser,
@@ -19,11 +19,13 @@ import {
   CookieStorage,
 } from "amazon-cognito-identity-js";
 import { LoginRequest, LoginSuccess } from "../../../State/actions";
+import { REACT_APP_USERPOOL_ID, REACT_APP_CLIENT_ID } from "@env";
 
 const region = "ap-south-1";
 
 const Login = ({ navigation }) => {
   // const { token, setToken } = useContext(AuthContext);
+  console.log("userpoolid", REACT_APP_USERPOOL_ID);
   const dispatch = useDispatch();
   const tokenID = useSelector((state) => state.user.user.tokenID);
   const user = useSelector((state) => state.user.user);
@@ -48,8 +50,10 @@ const Login = ({ navigation }) => {
     };
     var authenticationDetails = new AuthenticationDetails(authenticationData);
     var poolData = {
-      UserPoolId: "ap-south-1_CjfNcNygq", // Your user pool id here
+      UserPoolId: "ap-south-1_CjfNcNygq",
+      // "ap-south-1_CjfNcNygq"// Your user pool id here
       ClientId: "3a6g176qng5vtfnul7pm8uv0ek", // Your client id here
+      // 3a6g176qng5vtfnul7pm8uv0ek
     };
     var userPool = new CognitoUserPool(poolData);
     var userData = {
@@ -93,8 +97,13 @@ const Login = ({ navigation }) => {
 
             axios
               .get(
-                process.env.APIURL +
-                  attributes[2].getValue()
+                "https://e89qkzfh0g.execute-api.ap-south-1.amazonaws.com/sbx01/getRolePermissions/" +
+                  attributes[2].getValue(),
+                {
+                  headers: {
+                    Authorization: idToken,
+                  },
+                }
               )
               .then(async function (response) {
                 console.log(response.data);
